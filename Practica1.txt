@@ -129,3 +129,124 @@ ACCOUNT LOCK;
 
 drop tablespace test_purposes including contents and datafiles;
 
+
+
+10. Create tables with its columns according to your normalization. Create sequences for every primary
+key. Create primary and foreign keys. Insert at least 10 patients, 5 cost centers, items for each cost
+center (2 or 3) (Go to http://www.generatedata.com/). This should be a functional single script (.sql)
+(Better if you generate sql through sql developer) (1.0)
+
+
+
+--crear tabla de PATIENT
+create table PATIENT (
+IdPatient number(20) not null, 
+NroPatient number(20) unique not null, 
+Names varchar2(80) not null,
+Address varchar2(80)not null,
+IdCity number(20) not null,
+CONSTRAINT PK_PATIENT_IdPatient PRIMARY KEY(IdPatient),
+CONSTRAINT FK_CITY_IdCity FOREIGN KEY (IdCity) REFERENCES CITY(IdCity));
+
+select * from PATIENT
+
+
+CREATE SEQUENCE Incremento_IdPatient
+INCREMENT BY 1
+START WITH 1
+
+
+
+--crear tabla de CITY
+create table CITY (
+IdCity number(20) not null,
+City_State varchar2(80) not null,
+Zip varchar2(80) not null,
+CONSTRAINT PK_CITY_IdCity PRIMARY KEY(IdCity));
+
+
+select * from CITY
+
+
+
+CREATE SEQUENCE Incremento_IdCity
+INCREMENT BY 1
+START WITH 1
+
+
+--crear tabla BILL
+
+create table BILL (
+IdBill number(20) not null, 
+B_Date date not null, 
+Date_Admitted date not null,
+Discharge_Date date not null,
+Balance_Due float(20) not null,
+IdPatient number(20) not null, 
+CONSTRAINT PK_BILL_IdBill PRIMARY KEY(IdBill),
+CONSTRAINT FK_PATIENT_IdPatient FOREIGN KEY (IdPatient) REFERENCES PATIENT(IdPatient));
+
+select * from BILL
+
+
+CREATE SEQUENCE Incremento_IdBill
+INCREMENT BY 1
+START WITH 1
+
+
+--crear tabla COST_CENTER
+
+create table COST_CENTER (
+IdCost_Center number(20) not null,
+Code_Cost_Center number(20) unique not null,
+CC_Name varchar2(80) not null,
+CONSTRAINT PK_COST_CENTER_IdCost_Center PRIMARY KEY(IdCost_Center));
+
+
+select * from COST_CENTER
+
+
+CREATE SEQUENCE Incremento_IdCost_Center
+INCREMENT BY 1
+START WITH 1
+
+
+--crear tabla BILL_DETAILS
+
+create table BILL_DETAILS (
+IdBill_Details number(20) not null, 
+Date_Charged date not null, 
+Item_Code number(20) unique not null,
+BD_Description varchar2(300) not null,
+Charge float(20) not null,
+IdCost_Center number(20) not null,
+CONSTRAINT PK_BILL_DETAILS_IdBill_Details PRIMARY KEY(IdBill_Details),
+CONSTRAINT FK_COST_CENTER_IdCost_Center FOREIGN KEY (IdCost_Center) REFERENCES COST_CENTER(IdCost_Center));
+
+select * from BILL_DETAILS
+
+
+CREATE SEQUENCE Incremento_IdBill_Details
+INCREMENT BY 1
+START WITH 1
+
+
+--crear tabla de muchos a muchos BILL_AND_DETAILS
+
+create table BILL_AND_DETAILS (
+IdBill_and_Details number(20) not null,
+IdBill number(20) not null, 
+IdBill_Details number(20) not null, 
+CONSTRAINT PK_B_A_D_IdBill_and_Details PRIMARY KEY(IdBill_and_Details),
+CONSTRAINT FK_BILL_DETAILS_IdBill_Details FOREIGN KEY (IdBill_Details) REFERENCES BILL_DETAILS(IdBill_Details),
+CONSTRAINT FK_BILL_IdBill FOREIGN KEY (IdBill) REFERENCES BILL(IdBill));
+
+
+select * from BILL_AND_DETAILS
+
+
+
+CREATE SEQUENCE Incremento_IdBill_and_Details
+INCREMENT BY 1
+START WITH 1
+
