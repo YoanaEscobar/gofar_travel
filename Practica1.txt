@@ -85,3 +85,47 @@ IDLE_TIME 30
 FAILED_LOGIN_ATTEMPTS UNLIMITED
 PASSWORD_LIFE_TIME 100;
 
+
+7. Create 4 users, assign them the tablespace "hospital_bills"; profiles created should be used for the
+users, all the users should be allow to connect to the database. (0.2)
+
+create user user1
+identified by 12345
+default tablespace hospital_bills
+profile administrador;
+
+create user user2
+identified by 12345
+default tablespace hospital_bills
+profile finance;
+
+create user user3
+identified by 12345
+default tablespace hospital_bills
+profile development;
+
+create user user4
+identified by 12345
+default tablespace hospital_bills
+profile development;
+
+GRANT CREATE SESSION TO user1,user2,user3,user4;
+
+
+8. Lock the users associate with profiles: manager and finance . (0.2)
+
+
+ALTER USER user1
+ACCOUNT LOCK;
+
+
+ALTER USER user2
+ACCOUNT LOCK;
+
+
+
+9. Delete the tablespace called "test_purposes " (0.2)
+
+
+drop tablespace test_purposes including contents and datafiles;
+
