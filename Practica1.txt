@@ -1,0 +1,29 @@
+Realizado por:
+Julian Soto Giraldo
+Yoana Escobar Diaz
+
+
+2. Create 3 Tablespaces (0.2) :
+a. first one with 1 Gb and 3 datafiles, tablespace should be named "hospital_bills"
+b. second one with 500 Mb and 1 datafile, named "test_purposes".
+c. Undo tablespace with 5Mb of space and 1 datafile
+
+a.
+create tablespace hospital_bills datafile
+'hospital_bills1.dbf' size 300M,
+'hospital_bills2.dbf' size 200M,
+'hospital_bills3.dbf' size 524M
+EXTENT MANAGEMENT LOCAL 
+SEGMENT SPACE MANAGEMENT AUTO;
+
+
+b.
+create tablespace test_purposes datafile
+'test_purposes1.dbf' size 500M
+EXTENT MANAGEMENT LOCAL 
+SEGMENT SPACE MANAGEMENT AUTO;
+
+
+C.
+create UNDO TABLESPACE undots1
+DATAFILE 'undotbs_1a.dbf' SIZE 5M AUTOEXTEND OFF;
