@@ -42,3 +42,46 @@ create user adminDB
 identified by 12345
 default tablespace hospital_bills
 quota unlimited on hospital_bills;
+
+
+
+5. Assign the dba role and permissions to connect to the user just created (0.2)
+
+
+GRANT CONNECT,DBA TO adminDB;
+
+
+6. Create 3 profiles. (0.2)
+a. Profile 1: "manager " password life 40 days, one session per user, 15 minutes idle, 4 failed
+login attempts
+
+b. Profile 2: "finance " password life 15 days, one session per user, 3 minutes idle, 2 failed login
+attempts
+
+c. Profile 3: "development " password life 100 days, two session per user, 30 minutes idle, no
+failed login attempts
+
+
+
+CREATE PROFILE administrador LIMIT 
+SESSIONS_PER_USER 1
+IDLE_TIME 15
+FAILED_LOGIN_ATTEMPTS 4
+PASSWORD_LIFE_TIME 40;
+
+
+
+CREATE PROFILE finance LIMIT 
+SESSIONS_PER_USER 1
+IDLE_TIME 3
+FAILED_LOGIN_ATTEMPTS 2
+PASSWORD_LIFE_TIME 15;
+
+
+
+CREATE PROFILE development LIMIT 
+SESSIONS_PER_USER 2
+IDLE_TIME 30    
+FAILED_LOGIN_ATTEMPTS UNLIMITED
+PASSWORD_LIFE_TIME 100;
+
