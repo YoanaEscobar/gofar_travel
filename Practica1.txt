@@ -250,3 +250,167 @@ CREATE SEQUENCE Incremento_IdBill_and_Details
 INCREMENT BY 1
 START WITH 1
 
+
+
+
+---------------inserción de datos-----------------------------------------
+
+--inserción tabla CITY
+
+INSERT INTO CITY (IdCity, City_State, Zip)
+VALUES (Incremento_IdCity.nextval, 'Alabama', '20');
+
+INSERT INTO CITY (IdCity, City_State, Zip)
+VALUES (Incremento_IdCity.nextval, 'Indiana', '25');
+
+INSERT INTO CITY (IdCity, City_State, Zip)
+VALUES (Incremento_IdCity.nextval, 'Florida', '30');
+
+INSERT INTO CITY (IdCity, City_State, Zip)
+VALUES (Incremento_IdCity.nextval, 'California', '35');
+
+INSERT INTO CITY (IdCity, City_State, Zip)
+VALUES (Incremento_IdCity.nextval, 'Kansas', '40');
+
+select * from City
+
+
+--inserción tabla PATIENT
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 100, 'Julio', 'Calle 20# 40-12',1);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 200, 'Andrea', 'Calle 80 Apt 103',2);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 300, 'Alison', 'Carrera 42',3);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 400, 'David Alejandro', 'Transversal 12# 302',4);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 500, 'Juan David', 'Calle 12# 302',5);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 600, 'Karen', 'Calle 70# 2-15',5);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 700, 'Carolina', 'Transversal 10',4);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 800, 'Adriana', 'Carrera 30',3);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 900, 'Diego', 'Calle 50',2);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 1000, 'Rubiela', 'Transversal 20',1);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 1100, 'Juan Carlos', 'Calle 25',2);
+
+INSERT INTO PATIENT (IdPatient, NroPatient, P_Name, Address, IdCity )
+VALUES (Incremento_IdPatient.nextval, 1200, 'Daniel', 'Transversal 70',3);
+
+select * from PATIENT
+
+
+
+--inserción tabla COST_CENTER
+
+INSERT INTO COST_CENTER (IdCost_Center, Code_Cost_Center, CC_Name)
+VALUES (Incremento_IdCost_Center.nextval, 1000, 'Laboratorio' );
+
+INSERT INTO COST_CENTER (IdCost_Center, Code_Cost_Center, CC_Name)
+VALUES (Incremento_IdCost_Center.nextval, 2000, 'Radiologia' );
+
+INSERT INTO COST_CENTER (IdCost_Center, Code_Cost_Center, CC_Name)
+VALUES (Incremento_IdCost_Center.nextval, 3000, 'Quimica');
+
+INSERT INTO COST_CENTER (IdCost_Center, Code_Cost_Center, CC_Name)
+VALUES (Incremento_IdCost_Center.nextval, 4000, 'Direccion General' );
+
+INSERT INTO COST_CENTER (IdCost_Center, Code_Cost_Center, CC_Name)
+VALUES (Incremento_IdCost_Center.nextval, 5000, 'Planta de proceso' );
+
+select * from COST_CENTER
+
+
+--inserción tabla BILL_DETAILS
+
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/05/03', 'yyyy/mm/dd'), 50, 'Rayos X', 20000.00,1 );
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/05/08', 'yyyy/mm/dd'), 100, 'Glucosa', 40000.00,1 );
+
+-----
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/06/04', 'yyyy/mm/dd'), 150, 'Examen 1', 10000.00,2 );
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/06/13', 'yyyy/mm/dd'), 200, 'Examen 2', 60000.00,2 );
+
+----
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/04/04', 'yyyy/mm/dd'), 250, 'Compuestos', 15000.00,3 );
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/02/13', 'yyyy/mm/dd'), 300, 'Simples', 62000.00,3 );
+
+-------
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/08/01', 'yyyy/mm/dd'), 350, 'Compuestos', 50000.00,4 );
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/08/20', 'yyyy/mm/dd'), 400, 'Simples', 2000.00,4 );
+
+-------
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/08/06', 'yyyy/mm/dd'), 450, 'Recurso 1', 80000.00,5 );
+
+INSERT INTO BILL_DETAILS (IdBill_Details, Date_Charged, Item_Code, BD_Description,Charge, IdCost_Center )
+VALUES (Incremento_IdBill_Details.nextval, TO_DATE('2017/08/22', 'yyyy/mm/dd'), 500, 'Recurso 2', 900000.00,5 );
+
+
+
+select * from BILL_DETAILS
+
+
+
+--inserción tabla BILL
+
+INSERT INTO BILL(IdBill, B_Date, Date_Admitted, Discharge_Date, Balance_Due, IdPatient)
+VALUES (Incremento_IdBill.nextval, TO_DATE('2017/09/10', 'yyyy/mm/dd'), TO_DATE('2017/09/01', 'yyyy/mm/dd'), TO_DATE('2017/09/05', 'yyyy/mm/dd'),1000000.00,5);
+
+INSERT INTO BILL (IdBill, B_Date, Date_Admitted, Discharge_Date,Balance_Due, IdPatient)
+VALUES (Incremento_IdBill.nextval, TO_DATE('2017/09/12', 'yyyy/mm/dd'), TO_DATE('2017/09/03', 'yyyy/mm/dd'), TO_DATE('2017/09/06', 'yyyy/mm/dd') ,3000000.00,10);
+
+select * from BILL
+
+
+
+--inserción tabla BILL_AND_DETAILS
+
+INSERT INTO BILL_AND_DETAILS (IdBill_and_Details, IdBill, IdBill_Details )
+VALUES (Incremento_IdBill_and_Details.nextval,1,17 );
+
+INSERT INTO BILL_AND_DETAILS (IdBill_and_Details, IdBill, IdBill_Details )
+VALUES (Incremento_IdBill_and_Details.nextval,1,18 );
+
+INSERT INTO BILL_AND_DETAILS (IdBill_and_Details, IdBill, IdBill_Details )
+VALUES (Incremento_IdBill_and_Details.nextval,2,14 );
+
+INSERT INTO BILL_AND_DETAILS (IdBill_and_Details, IdBill, IdBill_Details )
+VALUES (Incremento_IdBill_and_Details.nextval,2,13 );
+
+
+select * from BILL
+select * from BILL_DETAILS
+select * from BILL_AND_DETAILS
