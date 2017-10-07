@@ -414,3 +414,14 @@ VALUES (Incremento_IdBill_and_Details.nextval,2,13 );
 select * from BILL
 select * from BILL_DETAILS
 select * from BILL_AND_DETAILS
+
+
+11. Create a backup through RMAN and take a screenshot of the list of backups in the console. Add the
+image to git. (0.4)
+
+1. entrar a esta ruta C:\oraclexe\app\oracle\product\11.2.0\server\bin>
+2. set ORACLE_SID=xe
+3. echo %ORACLE_SID%
+4. rman target /
+5. backup database;
+6. list backup;
